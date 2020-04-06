@@ -41,7 +41,7 @@
 		foreach($array as $row){
 			echo "<option value='".$row['id']."'";
 			if($row['id'] == $detail['category_id']) echo "selected"; 
-			echo ">".$row['category_name']."</option>";
+			echo ">".$row['id'].". ".$row['category_name']."</option>";
 		}
 		?>
 		</select>

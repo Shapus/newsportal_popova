@@ -37,7 +37,7 @@ else{
 			<td><select name="categoryId" class="form-control">
 			<?php
 			foreach($categoryArray as $category){
-				echo "<option value='".$category['id']."'>".$category['id'].": ".$category['category_name']."</option>";
+				echo "<option value='".$category['id']."'>".$category['id'].". ".$category['category_name']."</option>";
 			}
 			?>
 			</select>

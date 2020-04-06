@@ -8,11 +8,11 @@
 		if($test==true){
 ?>
 <div class="alert alert-info">
-<strong>Запись изменена</strong><a href="newsAdmnin">	Список новостей</*>
+<strong>Запись изменена</strong><a href="newsAdmin">Список новостей</a>
 </div>
 <?php
-}
-else if($test==false){
+		}
+		else if($test==false){
 ?>
 <div class="alert alert-warning">
 <strong>Ошибка изменения записи!</strong>
@@ -23,7 +23,7 @@ else if($test==false){
 	}
 	else{
 ?>
-<form method="POST" action="newsEditResult?id=<?php echo $id; ?>" enctype="form-data">
+<form method="POST" action="newsEditResult?id=<?php echo $id; ?>" enctype="multipart/form-data">
 <table class='table table-bordered'>
 	<tr>
 		<td>News title</td>
@@ -35,29 +35,28 @@ else if($test==false){
 	</tr>
 	<tr>
 		<td>Category</td>
-		<td><select narae="categoryId" class="form-control">
+		<td><select name="categoryId" class="form-control">
 		<?php
 		foreach($array as $row){
 			echo "<option value='".$row['id']."'";
 			if($row['id'] == $detail['category_id']) echo "selected"; 
-			echo ">".$row['category_name']."</option>";
+			echo ">".$row['id'].". ".$row['category_name']."</option>";
 		}
 ?>
 		</select>
 		</td>
 	</tr>
 	<tr>
-		<td>OldPicture</td>
+		<td>Old picture</td>
 		<td><div>
 		<?php 
 			echo "<img src='data:image/jpeg;base64, ".base64_encode($detail['image'])."' width=150 />";
 		?>
 		</div></td>
 	</tr>
-		<tr>
-		<td>Picture</td>
-		<td><div>
-		<input type="file" name="picture" style="color:black;">
+	<tr>
+		<td>New picture</td>
+		<td><div><input type="file" name="picture" style="color:black;">
 		</div></td>
 	</tr>
 	<tr>

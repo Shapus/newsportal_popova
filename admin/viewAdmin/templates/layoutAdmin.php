@@ -1,15 +1,15 @@
 <html>
 <head>
 <title>Панель управления</title>
-<link href="public/bootstrap.css" rel="stylesheet">
+<link href="public/css/bootstrap.css">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <link href="public/styles.css" rel="stylesheet">
 <link href="public/login.css" rel="stylesheet">
 <link href="public/mystyle.css" rel="stylesheet">
-<link href="public/font-awesome.min.css" rel="stylesheet">
+<link href="public/css/font-awesome.min.css">
 
-<script src="public/js/jquery.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/bootstrap.min.js"></script>
 <script type="text/javascript" src= "public/js/ajaxupload.3.5.js"></script>
 </head>
 <body>
@@ -49,6 +49,6 @@
 		<footer class="footer">
 			<p>&copy; JKTVR19 2020<i class="fa fa-child"></i></p>
 		</footer>
-	</div> <!— /container —>
+	</div>
 </body>
 </html>

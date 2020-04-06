@@ -27,16 +27,18 @@ class ModelAdminNews{
 	public static function getNewsAdd(){
 		$test = false;
 		if(isset($_POST['save'])){
-			if(isset($POST['title']) && isset($POST['text']) && isset($POST['categoryId'])){
-				$title = $POST['title'];
-				$text = $POST['text'];
-				$categoryId = $POST['categoryId'];
-				$image = addslashes(file_get_contents($_FILES['picture']['tmp_name']));
-				$query = "INSERT INTO news VALUES(NULL,'".$title."','".$text."','".$image."',1,10)";
+			if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['categoryId'])){
+				$title = $_POST['title'];
+				$text = $_POST['text'];
+				$categoryId = $_POST['categoryId'];
+				if($_FILES['picture']['tmp_name'])
+					$image = addslashes(file_get_contents($_FILES['picture']['tmp_name']));
+				if(isset($image))
+					$query = "INSERT INTO news(title,text,image,category_id,user_id) VALUES('".$title."','".$text."','".$image."',".$categoryId.",10)";
+				else
+					$query = "INSERT INTO news(title,text,category_id,user_id) VALUES('".$title."','".$text."',".$categoryId.",10)";
 				$database = new Database();
-				$item = $database->executeRun($query);
-				if($item==true)
-					$test = $true;
+				$test = $database->executeRun($query);
 			}
 		}
 		return $test;
@@ -44,22 +46,18 @@ class ModelAdminNews{
 	public static function getNewsEdit($id){
 		$test = false;
 		if(isset($_POST['save'])){
-			if(isset($POST['title']) && isset($POST['text']) && isset($POST['categoryId'])){
-				$title = $POST['title'];
-				$text = $POST['text'];
-				$categoryId = $POST['categoryId'];
-				$image = $_FILES['picture']['name'];
-				if($image != ""){
+			if(isset($_POST['title']) && isset($_POST['text']) && isset($_POST['categoryId'])){
+				$title = $_POST['title'];
+				$text = $_POST['text'];
+				$categoryId = $_POST['categoryId'];
+				if($_FILES['picture']['tmp_name'])
 					$image = addslashes(file_get_contents($_FILES['picture']['tmp_name']));
-					$query = "UPDATE news SET title='".$title."',text='".$text."',image='".$image."',category_id=".$categoryId." WHERE news.id=".$id;
-				}	
-				else{
-					$query = "UPDATE news SET title='".$title."',text='".$text."',category_id=".$categoryId." WHERE news.id=".$id;
-				}							
+				if(isset($image))
+					$query = "UPDATE news SET title='".$title."', text='".$text."', image='".$image."', category_id=".$categoryId." WHERE news.id=".$id;
+				else
+					$query = "UPDATE news SET title='".$title."', text='".$text."', category_id=".$categoryId." WHERE news.id=".$id;		
 				$database = new Database();
-				$item = $database->executeRun($query);
-				if($item==true)
-					$test = $true;
+				$test = $database->executeRun($query);
 			}
 		}
 		return $test;
